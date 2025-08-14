@@ -30,8 +30,8 @@
     AMD_VULKAN_ICD = "RADV";  # Préfère le pilote open-source RADV
 
   # Optimisations gaming
-#  RADV_PERFTEST = "gpl,rt";  # Active Geometry Pipeline + Ray Tracing
-    VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
+  #  RADV_PERFTEST = "gpl,rt";  # Active Geometry Pipeline + Ray Tracing
+    #VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
   };
-  services.xserver.desktopManager.runXdgAutostartIfNone = false;
+  #services.xserver.desktopManager.runXdgAutostartIfNone = false;
 }

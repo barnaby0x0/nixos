@@ -10,7 +10,7 @@
   outputs = { self, nixpkgs, home-manager, ... } @ inputs:
     let
       lib = nixpkgs.lib;
-      systems = [ "x86_64-linux" ];  # Extensible à d'autres systèmes
+      systems = [ "x86_64-linux" ];
       sharedArgs = {
         inherit lib;
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
@@ -19,9 +19,6 @@
       paths = {
         k8 = {
           host = "${self}/hosts/k8";
-          #config = "${self}/hosts/k8/configuration.nix";
-          #user = "${self}/hosts/k8/users/user.nix";
-          #vimConfig = "${self}/hosts/k8/users/user.vim.conf";
         };
         vagrant = {
           common = "${self}/hosts/common";
@@ -38,13 +35,11 @@
         };
       };
 
-
     in {
       nixosConfigurations = {
         k8 = lib.nixosSystem {
           system = "x86_64-linux";
-	  #modules = [paths.k8.host];
-	  modules = [
+	        modules = [
             paths.k8.host
             homeManagerModule
             {
@@ -72,32 +67,6 @@
             homeManagerSettings
           ];
         };
-
-      #nixosConfigurations.vagrant = lib.nixosSystem {
-      #  system = "x86_64-linux";
-      #  modules = [ 
-      #    "${self}/hosts/common/configuration.nix" 
-      #    "${self}/hosts/common/bootloader.nix" 
-      #    "${self}/hosts/common/hardware-builder.nix" 
-      #    "${self}/hosts/common/custom-configuration.nix" 
-      #    "${self}/hosts/common/hardware-configuration.nix" 
-      #    "${self}/hosts/vagrant/vagrant-hostname.nix" 
-      #    "${self}/hosts/vagrant/vagrant-network.nix" 
-      #    "${self}/hosts/common/users/victor.nix" 
-      #    "${self}/hosts/common/users/security.nix" 
-      #    "${self}/hosts/vagrant/users/vagrant.nix" 
-      #    home-manager.nixosModules.home-manager
-      #    {
-      #      users.mutableUsers = false;
-      #      home-manager.useGlobalPkgs = true;
-      #      home-manager.useUserPackages = true;
-      #      home-manager.users.vagrant = ./home.nix;
-      #      #home-manager.extraSpecialArgs = { self = self; };
-      #      home-manager.extraSpecialArgs = { victorVimConfig = victorVimConfig; };
-      #      home-manager.users.victor = ./home_victor.nix;
-      #    }
-      #  ];
-      #};
     };
   };
 }
