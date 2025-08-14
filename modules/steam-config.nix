@@ -7,7 +7,8 @@
     gamescopeSession.enable = true;
   };
 
-  programs.gamemode.enable = true;
+  # STABILITY
+  # programs.gamemode.enable = true;
 
   environment.systemPackages = with pkgs; [
     protonup-qt
@@ -19,9 +20,8 @@
     enable32Bit = true;          # Remplace driSupport32Bit
     extraPackages = with pkgs; [ # Remplace hardware.opengl.extraPackages
       amdvlk
-      # rocm-opencl-icd
     ];
-    extraPackages32 = with pkgs.pkgsi686Linux; [ # Nouvelle option pour les packages 32-bit
+    extraPackages32 = with pkgs.pkgsi686Linux; [
       amdvlk
     ];
   };
