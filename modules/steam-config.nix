@@ -4,7 +4,8 @@
 {
   programs.steam = {
     enable = true;
-    gamescopeSession.enable = true;
+    # STABILITY
+    # gamescopeSession.enable = true;
   };
 
   # STABILITY
@@ -26,8 +27,9 @@
     ];
   };
 
-  environment.variables = {
-    AMD_VULKAN_ICD = "RADV";  # Préfère le pilote open-source RADV
+  # STABILITY
+  # environment.variables = {
+  #   AMD_VULKAN_ICD = "RADV";  # Préfère le pilote open-source RADV
 
   # Optimisations gaming
   #  RADV_PERFTEST = "gpl,rt";  # Active Geometry Pipeline + Ray Tracing
