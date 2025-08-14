@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ../commons/users/user
+    ../../modules/gaming.nix
   ];
 
   # Bootloader.
@@ -113,6 +114,16 @@
     vim
     zsh
   ];
+
+  gaming = {
+    enable = true;
+
+    # Personnalisations optionnelles
+    steam.gamescopeSession = true;
+    gamemode.enable = true;
+
+    extraPackages = with pkgs; [];
+  };
 
   programs.zsh.enable = true;
 
