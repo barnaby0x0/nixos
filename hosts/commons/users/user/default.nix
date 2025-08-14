@@ -18,7 +18,11 @@
       shell = pkgs.zsh;
       packages = with pkgs; [
         glances
+        home-manager
       ];
     };
+
+    home-manager.users.user = import ../../../../home/user/user.home.nix;
+
 }
 

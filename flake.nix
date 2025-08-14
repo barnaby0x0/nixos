@@ -44,7 +44,9 @@
         k8 = lib.nixosSystem {
           system = "x86_64-linux";
 	  #modules = [paths.k8.host];
-	  modules = ["${self}/hosts/k8"];
+	  modules = [
+	    "${self}/hosts/k8"
+          ];
           #modules = [ 
           #  paths.k8.config
           #  paths.k8.user
