@@ -7,7 +7,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
     let
       lib = nixpkgs.lib;
       systems = [ "x86_64-linux" ];  # Extensible à d'autres systèmes
@@ -45,19 +45,14 @@
           system = "x86_64-linux";
 	  #modules = [paths.k8.host];
 	  modules = [
-	    "${self}/hosts/k8"
+            paths.k8.host
+            homeManagerModule
+            {
+              home-manager.extraSpecialArgs = {};
+            }
+            homeManagerSettings
+
           ];
-          #modules = [ 
-          #  paths.k8.config
-          #  paths.k8.user
-          #  homeManagerModule
-          #  {
-          #    home-manager.extraSpecialArgs = { 
-          #      userVimConfig = paths.k8.vimConfig; 
-          #    };
-          #  }
-          #  homeManagerSettings
-          #];
         };
 
         vagrant = lib.nixosSystem {

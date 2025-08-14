@@ -33,8 +33,7 @@
 #  services.git.enable = true;
 
   # Configuration des dotfiles (exemple simple)
-  #home.file.".vimrc".source = ./user.vim;
-  home.file.".vimrc".source = userVimConfig;
+  home.file.".vimrc".source = ./user.vim;
   #home.file = {
   #  ".vimrc".text = ''
   #    set number
