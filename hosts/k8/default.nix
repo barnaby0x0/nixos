@@ -4,7 +4,8 @@
   imports = [
     ./hardware-configuration.nix
     ../commons/users/user
-    ../../modules/gaming.nix
+    #../../modules/gaming.nix
+    ../../modules/steam-config.nix
   ];
 
   # Bootloader.
@@ -41,6 +42,9 @@
     LC_TELEPHONE = "fr_FR.UTF-8";
     LC_TIME = "fr_FR.UTF-8";
   };
+
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
 
   services.openssh = {
     enable = true;
@@ -113,17 +117,27 @@
     tmux
     vim
     zsh
+    plasma5Packages.breeze-gtk       # Thème Breeze par défaut
+    plasma5Packages.breeze-qt5
+    plasma5Packages.oxygen           # Thème Oxygen classique
+    plasma5Packages.arc-kde          # Thème Arc
+    plasma5Packages.materia-kde      # Thème Materia
   ];
 
-  gaming = {
-    enable = true;
 
-    # Personnalisations optionnelles
-    steam.gamescopeSession = true;
-    gamemode.enable = true;
-
-    extraPackages = with pkgs; [];
+  environment.plasma5.configFile = {
+    "kdeglobals"."General".name = "breeze-dark";  # Thème sombre
+    "kdeglobals"."KDE"."LookAndFeelPackage" = "org.kde.breezedark.desktop";
   };
+
+  #gaming = {
+  #  enable = true;
+  #  vulkan = {
+  #    enable = true;
+  #    #enableRayTracing = true; # Pour les cartes RDNA2+
+  #  };
+  #  extraPackages = with pkgs; [];
+  #};
 
   programs.zsh.enable = true;
 
@@ -135,8 +149,7 @@
     #enableSSHSupport = true;
   };
 
-  #qt.style = "breeze";
-  qt.style = "adwaita-dark";
+  qt.style = "breeze";
 
   # List services that you want to enable:
 
