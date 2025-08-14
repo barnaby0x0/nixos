@@ -45,14 +45,14 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   
-  services.power-profiles-daemon.enable = true;
-  security.polkit.extraConfig = ''
-    polkit.addRule(function(action, subject) {
-      if (action.id == "org.freedesktop.UPower.PowerProfiles.switch-profile") {
-        return polkit.Result.YES;
-      }
-    });
-  '';
+  # services.power-profiles-daemon.enable = true;
+  # security.polkit.extraConfig = ''
+  #   polkit.addRule(function(action, subject) {
+  #     if (action.id == "org.freedesktop.UPower.PowerProfiles.switch-profile") {
+  #       return polkit.Result.YES;
+  #     }
+  #   });
+  # '';
 
   services.openssh = {
     enable = true;
