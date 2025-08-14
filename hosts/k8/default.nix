@@ -43,7 +43,7 @@
   };
 
   hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
+  #hardware.bluetooth.powerOnBoot = true;
   
   # services.power-profiles-daemon.enable = true;
   # security.polkit.extraConfig = ''
