@@ -26,7 +26,7 @@
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" "sudo" "docker" ]; # example plugins
-      theme = "agnoster";                  # example theme
+      theme = "crunch";                  # example theme
     };
   };
   # Exemple d’activation d’un service utilisateur
