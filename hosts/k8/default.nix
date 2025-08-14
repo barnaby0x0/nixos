@@ -4,7 +4,6 @@
   imports = [
     ./hardware-configuration.nix
     ../commons/users/user
-    #../../modules/gaming.nix
     ../../modules/steam-config.nix
   ];
 
