@@ -14,7 +14,7 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/dm-0";
+    { device = "/dev/nvme0n1p2";
       fsType = "ext4";
     };
 
