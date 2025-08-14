@@ -1,10 +1,10 @@
-{ config, pkgs, victorVimConfig, ... }:
+{ config, pkgs, userVimConfig, ... }:
 
 {
   home.stateVersion = "25.05";
   # Définition de base du profil utilisateur
-  home.username = "victor";
-  home.homeDirectory = "/home/victor";
+  home.username = "user";
+  home.homeDirectory = "/home/user";
 
   # Paquets utilisateur à installer
   home.packages = with pkgs; [
@@ -33,7 +33,8 @@
 #  services.git.enable = true;
 
   # Configuration des dotfiles (exemple simple)
-  home.file.".vimrc".source = victorVimConfig;
+  #home.file.".vimrc".source = ./user.vim;
+  home.file.".vimrc".source = userVimConfig;
   #home.file = {
   #  ".vimrc".text = ''
   #    set number
