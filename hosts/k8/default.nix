@@ -4,7 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ../commons/users/user
-    ../../modules/steam-config.nix
+    # ../../modules/steam-config.nix
   ];
 
   # Bootloader.
