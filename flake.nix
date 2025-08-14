@@ -15,6 +15,23 @@
       [
         (import "${home-manager}/nixos")
       ];
+      nixosConfigurations.k8s = lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [ 
+          "${self}/hosts/k8s/configuration.nix" 
+          "${self}/hosts/common/users/victor.nix" 
+          home-manager.nixosModules.home-manager
+          {
+            users.mutableUsers = false;
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.vagrant = ./home.nix;
+            #home-manager.extraSpecialArgs = { self = self; };
+            home-manager.extraSpecialArgs = { victorVimConfig = victorVimConfig; };
+            home-manager.users.victor = ./home_victor.nix;
+          }
+        ];
+      };
       nixosConfigurations.vagrant = lib.nixosSystem {
         system = "x86_64-linux";
         modules = [ 
