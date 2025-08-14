@@ -38,6 +38,7 @@
 
   # Configuration des dotfiles (exemple simple)
   home.file.".vimrc".source = ./user.vim;
+  # power manager stable or not ??
   #home = {
   #  file = {
   #      ".config/autostart/steam.desktop".text = ''

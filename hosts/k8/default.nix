@@ -128,7 +128,6 @@
     virt-manager  # Interface graphique
     qemu_kvm      # Hyperviseur
     libvirt       # Daemon/librairies
-    #ovmf          # Firmware UEFI
     swtpm         # TPM émulé
     virt-viewer   # Visionneuse de VM
   ];
@@ -161,8 +160,6 @@
         swtpm.enable = true;  # Pour le support TPM (Windows 11)
       };
     };
-    
-    # Optionnel : Docker en parallèle (si besoin)
     docker.enable = true;
   };
 
