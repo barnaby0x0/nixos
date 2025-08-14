@@ -9,7 +9,7 @@
   users.users.user = {
       createHome = true;
       description = "Main User";
-      extraGroups     = [ "users" "wheel" ];
+      extraGroups     = [ "users" "wheel" "libvirtd" "kvm" "docker" ];
       group = "user";
       home = "/home/user";
       hashedPassword = "$6$FdYq/J2XbivlPLEG$Jx7ppF65H0vj/.6/118K/d1LUFa4dyucTSk9KTSxlDhIHGH/puUDIIGNx5fcn5H7XgTHPPa.TyyaIugiLw6GF/";

@@ -117,18 +117,13 @@
     tmux
     vim
     zsh
-    plasma5Packages.breeze-gtk       # Thème Breeze par défaut
-    plasma5Packages.breeze-qt5
-    plasma5Packages.oxygen           # Thème Oxygen classique
-    plasma5Packages.arc-kde          # Thème Arc
-    plasma5Packages.materia-kde      # Thème Materia
+    virt-manager  # Interface graphique
+    qemu_kvm      # Hyperviseur
+    libvirt       # Daemon/librairies
+    #ovmf          # Firmware UEFI
+    swtpm         # TPM émulé
+    virt-viewer   # Visionneuse de VM
   ];
-
-
-  environment.plasma5.configFile = {
-    "kdeglobals"."General".name = "breeze-dark";  # Thème sombre
-    "kdeglobals"."KDE"."LookAndFeelPackage" = "org.kde.breezedark.desktop";
-  };
 
   #gaming = {
   #  enable = true;
@@ -149,7 +144,20 @@
     #enableSSHSupport = true;
   };
 
-  qt.style = "breeze";
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemu = {
+        package = pkgs.qemu_kvm;
+        runAsRoot = true;
+        swtpm.enable = true;  # Pour le support TPM (Windows 11)
+      };
+    };
+    
+    # Optionnel : Docker en parallèle (si besoin)
+    docker.enable = true;
+  };
+
 
   # List services that you want to enable:
 
