@@ -28,6 +28,9 @@
       plugins = [ "git" "sudo" "docker" ]; # example plugins
       theme = "crunch";                  # example theme
     };
+    shellAliases = {
+      nrs = "sudo nixos-rebuild switch --flake /home/user/nixos#k8";
+    };
   };
   # Exemple d’activation d’un service utilisateur
 #  services.git.enable = true;
