@@ -12,6 +12,7 @@
     zsh
     glances
     nmap
+    vscode
   ];
 
   home.file.".vim/autoload/plug.vim".source = pkgs.fetchurl {

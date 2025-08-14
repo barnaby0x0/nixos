@@ -26,29 +26,12 @@
     ];
   };
 
-
-    # Activation des pilotes Vulkan/graphics
-  #hardware.opengl = {
-    #enable = true;
-    ##driSupport = true;
-    #driSupport32Bit = true;  # Nécessaire pour Steam/Proton
-  #};
-
-  # Pilotes AMD spécifiques
-#  hardware.opengl.extraPackages = with pkgs; [
-#    amdvlk  # Pilote Vulkan AMD officiel (optionnel)
-#    #rocm-opencl-icd  # Pour OpenCL/CUDA
-#  ];
-
-  # Alternative recommandée : Mesa RADV (pilote open-source)
-  #environment.variables.AMD_VULKAN_ICD = "RADV";  # Force l'utilisation de RADV
-
   environment.variables = {
-  AMD_VULKAN_ICD = "RADV";  # Préfère le pilote open-source RADV
+    AMD_VULKAN_ICD = "RADV";  # Préfère le pilote open-source RADV
 
   # Optimisations gaming
 #  RADV_PERFTEST = "gpl,rt";  # Active Geometry Pipeline + Ray Tracing
-#  VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
+    VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
   };
-# services.xserver.desktopManager.runXdgAutostartIfNone = false;
+  services.xserver.desktopManager.runXdgAutostartIfNone = false;
 }
