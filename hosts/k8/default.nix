@@ -135,6 +135,9 @@
     #enableSSHSupport = true;
   };
 
+  #qt.style = "breeze";
+  qt.style = "adwaita-dark";
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
