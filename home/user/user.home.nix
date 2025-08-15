@@ -13,6 +13,7 @@
     glances
     nmap
     vscode
+    terminator
   ];
 
   home.file.".vim/autoload/plug.vim".source = pkgs.fetchurl {
@@ -38,6 +39,7 @@
 
   # Configuration des dotfiles (exemple simple)
   home.file.".vimrc".source = ./user.vim;
+  home.file.".config/terminator/config".source = ./config.terminator;
   # power manager stable or not ??
   #home = {
   #  file = {
