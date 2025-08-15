@@ -147,7 +147,7 @@
   };
 
   virtualisation.libvirtd.enable = true;
-  virtualisation.virt-manager.enable = true;
+  programs.virt-manager.enable = true;
   virtualisation.docker.enable = true;
 
   # List services that you want to enable:
