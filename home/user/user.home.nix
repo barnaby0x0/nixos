@@ -30,7 +30,7 @@
       theme = "crunch";                  # example theme
     };
     shellAliases = {
-      nrs = "sudo nixos-rebuild switch --flake /home/user/nixos#k8";
+      nrs = "sudo nixos-rebuild switch --flake github:barnaby0x0/nixos#k8";
     };
   };
   # Exemple d’activation d’un service utilisateur
