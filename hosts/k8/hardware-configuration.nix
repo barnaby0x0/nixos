@@ -2,7 +2,15 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 { config, lib, pkgs, modulesPath, ... }:
+let
+  getEnvWithDefault = var: default: 
+    let value = builtins.getEnv var;
+    in if value == "" then default else value;
 
+  luks_part = getEnvWithDefault "LUKS_PART" "/dev/disk/by-partlabel/root";
+  root_part = getEnvWithDefault "ROOT_PART" "/dev/dm-0";
+  boot_part = getEnvWithDefault "BOOT_PART" "/dev/nvme0n1p1";
+in
 {
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
@@ -14,17 +22,30 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/dm-0";
+    { device = ${root_part};
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices.root.device = "/dev/disk/by-partlabel/root";
+  boot.initrd.luks.devices.root.device = ${luks_part};
 
   fileSystems."/boot" =
-    { device = "/dev/nvme0n1p1";
+    { device = ${boot_part};
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
+
+#  fileSystems."/" =
+#    { device = "/dev/dm-0";
+#      fsType = "ext4";
+#    };
+#
+#  boot.initrd.luks.devices.root.device = "/dev/disk/by-partlabel/root";
+#
+#  fileSystems."/boot" =
+#    { device = "/dev/nvme0n1p1";
+#      fsType = "vfat";
+#      options = [ "fmask=0077" "dmask=0077" ];
+#    };
 
   swapDevices = [ ];
 
