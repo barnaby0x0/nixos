@@ -4,7 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ../commons/users/user
-    #../../modules/steam-config.nix
+    ../../modules/steam-config.nix
   ];
 
   # Bootloader.
@@ -125,11 +125,6 @@
     tmux
     vim
     zsh
-    virt-manager  # Interface graphique
-    qemu_kvm      # Hyperviseur
-    libvirt       # Daemon/librairies
-    swtpm         # TPM émulé
-    virt-viewer   # Visionneuse de VM
   ];
 
   #gaming = {
@@ -151,18 +146,9 @@
     #enableSSHSupport = true;
   };
 
-  virtualisation = {
-    libvirtd = {
-      enable = true;
-      qemu = {
-        package = pkgs.qemu_kvm;
-        runAsRoot = true;
-        swtpm.enable = true;  # Pour le support TPM (Windows 11)
-      };
-    };
-    docker.enable = true;
-  };
-
+  virtualisation.libvirtd.enable = true;
+  virtualisation.virt-manager.enable = true;
+  virtualisation.docker.enable = true;
 
   # List services that you want to enable:
 
