@@ -71,14 +71,16 @@
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
+
+  # Exclude kwallet
   security.pam.services.sddm.kwallet.enable = false;
   security.pam.services.login.kwallet.enable = pkgs.lib.mkForce false;
 
-  environment.plasma6.excludePackages = [
-    kwallet
-    kwalletmanager
-    kwallet-pam
-  ]
+  # environment.plasma6.excludePackages = [
+  #   kwallet
+  #   kwalletmanager
+  #   kwallet-pam
+  # ]
 
   # Configure keymap in X11
   services.xserver.xkb = {
