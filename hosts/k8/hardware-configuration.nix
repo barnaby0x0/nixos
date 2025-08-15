@@ -22,14 +22,14 @@ in
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = ${root_part};
+    { device = root_part;
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices.root.device = ${luks_part};
+  boot.initrd.luks.devices.root.device = luks_part;
 
   fileSystems."/boot" =
-    { device = ${boot_part};
+    { device = boot_part;
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
