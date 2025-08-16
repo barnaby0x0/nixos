@@ -118,6 +118,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    qt6.qtwayland
     findutils
     git
     gnumake
@@ -132,6 +133,14 @@
     vim
     zsh
   ];
+
+  environment.variables = {
+    QT_QPA_PLATFORM = "wayland";
+    MOZ_ENABLE_WAYLAND = "1";
+  };
+
+  xdg.portal.enable = true;
+
 
   #gaming = {
   #  enable = true;
