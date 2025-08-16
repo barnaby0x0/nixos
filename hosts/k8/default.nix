@@ -134,6 +134,8 @@
     zsh
   ];
 
+  programs.vim.defaultEditor = true;
+
   environment.variables = {
     QT_QPA_PLATFORM = "wayland";
     MOZ_ENABLE_WAYLAND = "1";
