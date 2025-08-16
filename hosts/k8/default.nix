@@ -17,6 +17,9 @@
   boot.initrd.kernelModules = [ "amdgpu" ];
 
   networking.hostName = "k8"; # Define your hostname.
+  networking.hosts = {
+    "10.10.0.93" = [ "ull" ];
+  };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -173,10 +176,12 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 
+    24800 #deskflow
+  ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

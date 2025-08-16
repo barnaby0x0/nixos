@@ -15,6 +15,7 @@
     vscode
     terminator
     brave
+    deskflow
   ];
 
   home.file.".vim/autoload/plug.vim".source = pkgs.fetchurl {
