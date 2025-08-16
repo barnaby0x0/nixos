@@ -14,6 +14,7 @@
     nmap
     vscode
     terminator
+    brave
   ];
 
   home.file.".vim/autoload/plug.vim".source = pkgs.fetchurl {
