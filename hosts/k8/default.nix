@@ -15,6 +15,7 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.kernelModules = [ "virtiofs" ];
 
   networking.hostName = "k8"; # Define your hostname.
   networking.hosts = {
@@ -176,7 +177,24 @@
     #enableSSHSupport = true;
   };
 
-  virtualisation.libvirtd.enable = true;
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu_kvm;
+      runAsRoot = true;
+      swtpm.enable = true;
+      ovmf = {
+        enable = true;
+        packages = [(pkgs.OVMF.override {
+          secureBoot = true;
+          tpmSupport = true;
+        }).fd];
+      };
+      vhostUserPackages = [ pkgs.virtiofsd ];
+    };
+  };
+
+  # virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
   virtualisation.docker.enable = true;
 
