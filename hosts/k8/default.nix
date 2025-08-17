@@ -74,7 +74,17 @@
   services.xserver.videoDrivers = [ "amdgpu" ];
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    settings = {
+      General = {
+        LoginTimeoutSec = 15;
+        MinimumUid = 1000;
+        MaximumUid = 65000;
+      };
+    };
+  };
+
   services.desktopManager.plasma6.enable = true;
 
   # Exclude kwallet
