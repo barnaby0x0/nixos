@@ -23,7 +23,6 @@
     sha256 = "sha256-wtiZhGmgSaUSJacRKKEpF7N5gi0WtjlJPinqAth4cwY=";
   };
 
-
   # Gestionnaire de shell et configuration de l’environnement
   programs.zsh = {
     enable = true;
@@ -59,12 +58,6 @@
   #        X-KDE-RunOnDiscreteGpu=true
   #      '';
   #  };
-  #};
-  #home.file = {
-  #  ".vimrc".text = ''
-  #    set number
-  #    syntax on
-  #  '';
   #};
 }
 
