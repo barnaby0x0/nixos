@@ -35,29 +35,26 @@
       nrs = "sudo nixos-rebuild switch --flake github:barnaby0x0/nixos#k8";
     };
   };
-  # Exemple d’activation d’un service utilisateur
-#  services.git.enable = true;
 
   # Configuration des dotfiles (exemple simple)
   home.file.".vimrc".source = ./user.vim;
   home.file.".config/terminator/config".source = ./config.terminator;
-  # power manager stable or not ??
-  #home = {
-  #  file = {
-  #      ".config/autostart/steam.desktop".text = ''
-  #        [Desktop Entry]
-  #        Name=Steam
-  #        Exec=steam -nochatui -nofriendsui -silent
-  #        Icon=steam
-  #        Terminal=false
-  #        Type=Application
-  #        Categories=Network;FileTransfer;Game;
-  #        MimeType=x-scheme-handler/steam;x-scheme-handler/steamlink;
-  #        Actions=Store;Community;Library;Servers;Screenshots;News;Settings;BigPicture;Friends;
-  #        PrefersNonDefaultGPU=true
-  #        X-KDE-RunOnDiscreteGpu=true
-  #      '';
-  #  };
-  #};
+  home = {
+    file = {
+        ".config/autostart/steam.desktop".text = ''
+          [Desktop Entry]
+          Name=Steam
+          Exec=steam -nochatui -nofriendsui -silent
+          Icon=steam
+          Terminal=false
+          Type=Application
+          Categories=Network;FileTransfer;Game;
+          MimeType=x-scheme-handler/steam;x-scheme-handler/steamlink;
+          Actions=Store;Community;Library;Servers;Screenshots;News;Settings;BigPicture;Friends;
+          PrefersNonDefaultGPU=true
+          X-KDE-RunOnDiscreteGpu=true
+        '';
+    };
+  };
 }
 
