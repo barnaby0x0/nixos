@@ -21,7 +21,7 @@
   networking.hosts = {
     "10.10.0.93" = [ "ull" ];
   };
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -156,17 +156,6 @@
   };
 
   xdg.portal.enable = true;
-
-
-  #gaming = {
-  #  enable = true;
-  #  vulkan = {
-  #    enable = true;
-  #    #enableRayTracing = true; # Pour les cartes RDNA2+
-  #  };
-  #  extraPackages = with pkgs; [];
-  #};
-
   programs.zsh.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -194,7 +183,6 @@
     };
   };
 
-  # virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
   virtualisation.docker.enable = true;
 
