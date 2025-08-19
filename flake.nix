@@ -45,7 +45,6 @@
               home-manager.extraSpecialArgs = {};
             }
             homeManagerSettings
-
           ];
         };
 
@@ -53,6 +52,11 @@
           system = "x86_64-linux";
           modules = [
             paths.vagrant.host
+            homeManagerModule
+            {
+              home-manager.extraSpecialArgs = {};
+            }
+            homeManagerSettings
           ];
         };
     };
