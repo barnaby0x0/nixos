@@ -52,10 +52,11 @@
           system = "x86_64-linux";
           modules = [
             paths.vagrant.host
-            #nixpkgs.config.allowUnfree = true;
-            
-            nixpkgs.config.allowUnfreePredicate = pkg: 
-              builtins.elem (lib.getName pkg) ["vscode"];
+            {
+              #nixpkgs.config.allowUnfree = true;
+              nixpkgs.config.allowUnfreePredicate = pkg: 
+                builtins.elem (lib.getName pkg) ["vscode"];
+            }
             homeManagerModule
             {
               home-manager.extraSpecialArgs = {};
