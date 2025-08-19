@@ -21,8 +21,7 @@
           host = "${self}/hosts/k8";
         };
         vagrant = {
-          common = "${self}/hosts/common";
-          config = "${self}/hosts/vagrant";
+          host = "${self}/hosts/vagrant";
         };
       };
       
@@ -53,18 +52,7 @@
         vagrant = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            "${paths.vagrant.common}/configuration.nix"
-            "${paths.vagrant.common}/bootloader.nix"
-            "${paths.vagrant.common}/hardware-configuration.nix"
-            "${paths.vagrant.config}/vagrant-hostname.nix"
-            homeManagerModule
-            {
-              home-manager.extraSpecialArgs = { 
-                victorVimConfig = "${paths.vagrant.common}/users/victor_vim_configuration";
-              };
-              home-manager.users.victor = import ./home_victor.nix;
-            }
-            homeManagerSettings
+            paths.k8.host
           ];
         };
     };

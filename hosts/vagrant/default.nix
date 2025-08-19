@@ -7,6 +7,7 @@
       ./hardware-builder.nix
       ./bootloader.nix
       ./custom-configuration.nix
+      ./users.nix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
