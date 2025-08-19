@@ -14,7 +14,7 @@
     hashedPasswordFile = "/etc/nixos/secrets/passwords/vagrant/hashed_password";
     home            = "/home/vagrant";
     createHome      = true;
-    shell = pkgs.zsh;
+    shell = pkgs.bash;
     openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN1YdxBpNlzxDqfJyw/QKow1F+wvG9hXGoqiysfJOn5Y vagrant insecure public key"
     ];
