@@ -24,5 +24,5 @@
     hashedPassword = "$6$w9lAKhDffJKvNdCv$1aXZQa0Ha29huB15mOp4.k1269gjh/G7aDqJNep7IJzJxz/5A.DzHOGIRFyRXNnbOqgtGwQYQEkdcA/zVaSUs.";
   };
 
-  home-manager.users.user = import ../../home/user/vagrant.home.nix;
+  home-manager.users.vagrant = import ../../home/user/vagrant.home.nix;
 }
