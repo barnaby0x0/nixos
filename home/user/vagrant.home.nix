@@ -3,8 +3,8 @@
 {
   home.stateVersion = "25.05";
   # Définition de base du profil utilisateur
-  home.username = "user";
-  home.homeDirectory = "/home/user";
+  home.username = "vagrant";
+  home.homeDirectory = "/home/vagrant";
 
   # Paquets utilisateur à installer
   home.packages = with pkgs; [];
