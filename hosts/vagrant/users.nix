@@ -23,4 +23,6 @@
   users.users.root = { 
     hashedPassword = "$6$w9lAKhDffJKvNdCv$1aXZQa0Ha29huB15mOp4.k1269gjh/G7aDqJNep7IJzJxz/5A.DzHOGIRFyRXNnbOqgtGwQYQEkdcA/zVaSUs.";
   };
+
+  home-manager.users.user = import ../../home/user/user.home.nix;
 }
