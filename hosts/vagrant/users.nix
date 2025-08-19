@@ -11,7 +11,7 @@
     name            = "vagrant";
     group           = "vagrant";
     extraGroups     = [ "users" "wheel" ];
-    hashedPasswordFile = "/etc/nixos/secrets/passwords/vagrant/hashed_password";
+    hashedPassword = "$6$w9lAKhDffJKvNdCv$1aXZQa0Ha29huB15mOp4.k1269gjh/G7aDqJNep7IJzJxz/5A.DzHOGIRFyRXNnbOqgtGwQYQEkdcA/zVaSUs.";
     home            = "/home/vagrant";
     createHome      = true;
     shell = pkgs.bash;
