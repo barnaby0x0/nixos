@@ -52,7 +52,7 @@
         vagrant = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            paths.k8.host
+            paths.vagrant.host
           ];
         };
     };
