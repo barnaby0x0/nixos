@@ -146,6 +146,7 @@
     tmux
     vim
     zsh
+    lm_sensors
   ];
 
   programs.vim.defaultEditor = true;
