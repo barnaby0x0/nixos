@@ -8,7 +8,7 @@
     myflake.url = "git+https://github.com/barnaby0x0/nixos-environments.git?dir=azure";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
+  outputs = { self, nixpkgs, home-manager, myflake ... } @ inputs:
     let
       lib = nixpkgs.lib;
       systems = [ "x86_64-linux" ];
