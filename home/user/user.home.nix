@@ -12,6 +12,7 @@
     zsh
     glances
     nmap
+    tmux
     vscode
     terminator
     brave
@@ -39,6 +40,7 @@
   # Configuration des dotfiles (exemple simple)
   home.file.".vimrc".source = ./user.vim;
   home.file.".config/terminator/config".source = ./config.terminator;
+  home.file.".tmux.conf".source = ./tmux.conf;
   home = {
     file = {
         ".config/autostart/steam.desktop".text = ''
