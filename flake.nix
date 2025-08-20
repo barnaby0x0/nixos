@@ -5,6 +5,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    myflake.url = "git+https://github.com/barnaby0x0/nixos-environments.git?dir=azure";
   };
 
   outputs = { self, nixpkgs, home-manager, ... } @ inputs:
@@ -65,5 +66,6 @@
           ];
         };
     };
+    devShells.x86_64-linux.azure = myflake.devShells.x86_64-linux.default;
   };
 }
