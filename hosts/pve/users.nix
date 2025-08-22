@@ -17,9 +17,9 @@
     shell = pkgs.bash;
     isNormalUser = true;
   };
-  users.users.root = { 
-    hashedPassword = "$6$D7M0zSnb5nDkhkRU$492h3gwtIHjhwj863MGVhFzPolG1Q7VtOuKbyGaoXKv7EO2M5wv4LJuJh3VpICXIegAKI/uiHQXiepYqKuivn.";
-  };
+  # users.users.root = { 
+  #   hashedPassword = "$6$D7M0zSnb5nDkhkRU$492h3gwtIHjhwj863MGVhFzPolG1Q7VtOuKbyGaoXKv7EO2M5wv4LJuJh3VpICXIegAKI/uiHQXiepYqKuivn.";
+  # };
 
   # home-manager.users.vagrant = import ../../home/user/vagrant.home.nix;
 }

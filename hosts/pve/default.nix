@@ -15,7 +15,7 @@
   # your boot until you press *.
   boot.initrd.checkJournalingFS = false;
 
-  networking.hostName = "vagrant";
+  networking.hostName = "nixos";
   # Services to enable:
 
   # Enable the OpenSSH daemon.
