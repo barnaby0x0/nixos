@@ -7,8 +7,8 @@
       ./hardware-builder.nix
       ./bootloader.nix
       ./custom-configuration.nix
-      # ./users.nix
-      ../commons/users/user
+      ./users.nix
+      #../commons/users/user
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
