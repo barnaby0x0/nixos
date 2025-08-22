@@ -23,6 +23,9 @@
         vagrant = {
           host = "${self}/hosts/vagrant";
         };
+        pve = {
+          host = "${self}/hosts/pve";
+        };
       };
       
       homeManagerModule = home-manager.nixosModules.home-manager;
@@ -62,6 +65,13 @@
               home-manager.extraSpecialArgs = {};
             }
             homeManagerSettings
+          ];
+        };
+        
+        pve = lib.nixosSystem {
+          system = "x86_64-linux";
+	        modules = [
+            paths.pve.host
           ];
         };
     };
