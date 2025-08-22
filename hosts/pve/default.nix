@@ -45,7 +45,7 @@
   #  allowedTCPPorts = [ 2049 ];                                               
   #  allowedUDPPorts = [ 2049 ];                                               
   #};  
-
+  services.qemuGuestAgent.enable = true;
   environment.systemPackages = with pkgs; [
     findutils
     git
