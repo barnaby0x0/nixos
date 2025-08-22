@@ -8,7 +8,6 @@
       ./bootloader.nix
       ./custom-configuration.nix
       ./users.nix
-      #../commons/users/user
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -64,7 +63,7 @@
   ];
 
   programs.zsh.enable = true;
-  #users.mutableUsers = false;
+  users.mutableUsers = false;
   #users.users.vagrant.shell = pkgs.zsh;
 
   # security.sudo.extraConfig =
