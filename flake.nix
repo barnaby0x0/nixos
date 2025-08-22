@@ -72,6 +72,10 @@
           system = "x86_64-linux";
 	        modules = [
             paths.pve.host
+            {
+              nixpkgs.config.allowUnfreePredicate = pkg: 
+                builtins.elem (lib.getName pkg) ["vscode"];
+            }
             homeManagerModule
             {
               home-manager.extraSpecialArgs = {};
