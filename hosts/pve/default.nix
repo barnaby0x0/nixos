@@ -1,82 +1,52 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-    ./user.nix
-  ];
+  imports =
+    [
+      ./hardware-configuration.nix
+      ./hardware-builder.nix
+      ./bootloader.nix
+      ./custom-configuration.nix
+      ./users.nix
+      ../commons/users/user
+    ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  # remove the fsck that runs at startup. It will always fail to run, stopping
+  # your boot until you press *.
+  boot.initrd.checkJournalingFS = false;
 
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  networking.hostName = "vagrant";
+  # Services to enable:
 
-  networking.hostName = "pve"; # Define your hostname.
-  # networking.hosts = {
-  #   "10.10.0.93" = [ "ull" ];
-  # };
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # Enable the OpenSSH daemon.
+  services.openssh.enable = true;
+  services.openssh.extraConfig =
+    ''
+      PubkeyAcceptedKeyTypes +ssh-rsa
+    '';
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  # Enable DBus
+  services.dbus.enable    = true;
 
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  # Set your time zone.
-  time.timeZone = "Europe/Paris";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "fr_FR.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "fr_FR.UTF-8";
-    LC_IDENTIFICATION = "fr_FR.UTF-8";
-    LC_MEASUREMENT = "fr_FR.UTF-8";
-    LC_MONETARY = "fr_FR.UTF-8";
-    LC_NAME = "fr_FR.UTF-8";
-    LC_NUMERIC = "fr_FR.UTF-8";
-    LC_PAPER = "fr_FR.UTF-8";
-    LC_TELEPHONE = "fr_FR.UTF-8";
-    LC_TIME = "fr_FR.UTF-8";
-  };
-
-  hardware.bluetooth.enable = true;
-  #hardware.bluetooth.powerOnBoot = true;
+  # Replace ntpd by timesyncd
+  services.timesyncd.enable = true;
   
-  # services.power-profiles-daemon.enable = true;
-  # security.polkit.extraConfig = ''
-  #   polkit.addRule(function(action, subject) {
-  #     if (action.id == "org.freedesktop.UPower.PowerProfiles.switch-profile") {
-  #       return polkit.Result.YES;
-  #     }
-  #   });
-  # '';
+  ## Minimal setup to make it works with Vagrant next to this build
+  # Minimal configuration for NFS support with Vagrant.
+  #services.nfs.server.enable = true;
+  
+  ## Add firewall exception for VirtualBox provider 
+  #networking.firewall.extraCommands = ''
+  #  ip46tables -I INPUT 1 -i vboxnet+ -p tcp -m tcp --dport 2049 -j ACCEPT
+  #'';
 
-  services.openssh = {
-    enable = true;
-    ports = [ 22 ];
-    settings = {
-      PasswordAuthentication = true;
-      X11Forwarding = false;
-      PermitRootLogin = "prohibit-password"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
-    };
-  };
+  ## Add firewall exception for libvirt provider when using NFSv4 
+  #networking.firewall.interfaces."virbr1" = {                                   
+  #  allowedTCPPorts = [ 2049 ];                                               
+  #  allowedUDPPorts = [ 2049 ];                                               
+  #};  
 
-
-  # Configure console keymap
-  console.keyMap = "fr";
-
-  # Enable CUPS to print documents.
-  services.printing.enable = false;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     findutils
     git
@@ -91,46 +61,22 @@
     tmux
     vim
     zsh
-    lm_sensors
   ];
 
-  programs.vim.defaultEditor = true;
   programs.zsh.enable = true;
+  #users.mutableUsers = false;
+  #users.users.vagrant.shell = pkgs.zsh;
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    #enableSSHSupport = true;
-  };
+  security.sudo.extraConfig =
+    ''
+      Defaults:root,%wheel env_keep+=LOCALE_ARCHIVE
+      Defaults:root,%wheel env_keep+=NIX_PATH
+      Defaults:root,%wheel env_keep+=TERMINFO_DIRS
+      Defaults env_keep+=SSH_AUTH_SOCK
+      Defaults lecture = never
+      root   ALL=(ALL) SETENV: ALL
+      %wheel ALL=(ALL) NOPASSWD: ALL, SETENV: ALL
+    '';
 
-  virtualisation.docker.enable = true;
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  networking.firewall.enable = true;
-
-  environment.etc."current-system-packages".text =
-  let
-    packages = builtins.map (p: "${p.name}") config.environment.systemPackages;
-    sortedUnique = builtins.sort builtins.lessThan (pkgs.lib.lists.unique packages);
-    formatted = builtins.concatStringsSep "\n" sortedUnique;
-  in
-    formatted;
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # Did you read the comment?
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
 
