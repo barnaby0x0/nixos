@@ -7,7 +7,6 @@
       ./hardware-builder.nix
       ./bootloader.nix
       ./custom-configuration.nix
-      ./users.nix
       ../commons/users/user
     ];
 
@@ -61,6 +60,25 @@
     tmux
     vim
     zsh
+  ];
+
+   nixpkgs.overlays = [
+    (self: super: {
+      glances = super.glances.overridePythonAttrs (old: rec {
+        version = "4.3.2";
+        src = super.fetchFromGitHub {
+          owner = "nicolargo";
+          repo = "glances";
+          rev = "v${version}";
+          hash = "sha256-pI0zPK7lfybln4garGtK1Sv7PxIaLUugQV5yJWOBudY=";
+        };
+        
+        # Ajouter les dépendances manquantes
+        propagatedBuildInputs = old.propagatedBuildInputs or [] ++ [
+          super.python3Packages.shtab
+        ];
+      });
+    })
   ];
 
   programs.zsh.enable = true;

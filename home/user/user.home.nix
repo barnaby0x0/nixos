@@ -10,14 +10,16 @@
   home.packages = with pkgs; [
     vim
     zsh
-    glances
     nmap
+    glances
     tmux
     vscode
     terminator
     brave
     deskflow
   ];
+
+  #environment.systemPackages = with pkgs; [ glances ];
 
   home.file.".vim/autoload/plug.vim".source = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim";
@@ -29,8 +31,8 @@
     enable = true;
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "sudo" "docker" ]; # example plugins
-      theme = "crunch";                  # example theme
+      plugins = [ "git" "sudo" "docker" ];
+      theme = "af-magic";
     };
     shellAliases = {
       nrs = "sudo nixos-rebuild switch --flake github:barnaby0x0/nixos#k8";
