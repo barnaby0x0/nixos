@@ -8,15 +8,15 @@
 
   # Paquets utilisateur à installer
   home.packages = with pkgs; [
-    vim
-    zsh
-    nmap
-    glances
-    tmux
-    vscode
-    terminator
     brave
     deskflow
+    glances
+    nmap
+    terminator
+    tmux
+    vim
+    vscode
+    zsh
   ];
 
   #environment.systemPackages = with pkgs; [ glances ];

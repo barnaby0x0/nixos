@@ -16,7 +16,6 @@
       isNormalUser = true;
       shell = pkgs.zsh;
       packages = with pkgs; [
-        glances
         home-manager
       ];
     };
