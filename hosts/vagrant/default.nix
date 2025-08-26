@@ -61,7 +61,7 @@
     tmux
     vim
     zsh
-    nmap
+    duplicity
   ];
 
    nixpkgs.overlays = [
