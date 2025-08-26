@@ -12,6 +12,8 @@
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.require-sigs = false;
+  nix.settings.trusted-users = ["root" "vagrant"];
   # remove the fsck that runs at startup. It will always fail to run, stopping
   # your boot until you press *.
   boot.initrd.checkJournalingFS = false;
