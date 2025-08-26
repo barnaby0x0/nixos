@@ -69,13 +69,13 @@
    nixpkgs.overlays = [
     (self: super: {
       glances = super.glances.overridePythonAttrs (old: rec {
-        version = "4.3.2";
+        version = "4.3.3";
         src = super.fetchFromGitHub {
           owner = "nicolargo";
           repo = "glances";
           rev = "v${version}";
-          hash = "sha256-pI0zPK7lfybln4garGtK1Sv7PxIaLUugQV5yJWOBudY=";
-          # hash = "sha256-RmGbd8Aa2jJ2DMrBUUoa8mPBa6bGnQd0s0y3p/zP0ng=";
+          # hash = "sha256-pI0zPK7lfybln4garGtK1Sv7PxIaLUugQV5yJWOBudY=";
+          hash = "sha256-RmGbd8Aa2jJ2DMrBUUoa8mPBa6bGnQd0s0y3p/zP0ng=";
         };
         
         # Ajouter les dépendances manquantes
