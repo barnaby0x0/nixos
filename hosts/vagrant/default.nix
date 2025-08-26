@@ -72,7 +72,7 @@
           repo = "glances";
           rev = "v${version}";
           # hash = "sha256-pI0zPK7lfybln4garGtK1Sv7PxIaLUugQV5yJWOBudY=";
-          hash = "sha256-O0INdOPKnM1ISIpuhZJ0d8BhcjEM27bJaH/90LNAX0k=";
+          hash = "sha256-RmGbd8Aa2jJ2DMrBUUoa8mPBa6bGnQd0s0y3p/zP0ng=";
         };
         
         # Ajouter les dépendances manquantes
