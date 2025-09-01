@@ -30,6 +30,19 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  fileSystems."/home/user/Workspace" = {
+    device = "10.10.0.72:/Workspace";
+    fsType = "nfs";
+    options = [
+      "defaults"
+      "nofail"
+      "x-systemd.device-timeout=9"
+      "proto=tcp"
+      "port=2049"
+    ];
+  };
+
+
   # Set your time zone.
   time.timeZone = "Europe/Paris";
 
