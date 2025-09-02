@@ -50,21 +50,12 @@
   #};  
 
   environment.systemPackages = with pkgs; [
-    colmena
     findutils
     git
-    gnumake
-    htop
     iputils
-    jq
     netcat
     nettools
-    nfs-utils
-    rsync
-    tmux
     vim
-    zsh
-    duplicity
   ];
 
    nixpkgs.overlays = [
