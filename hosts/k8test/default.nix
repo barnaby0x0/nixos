@@ -2,7 +2,7 @@
 
 {
   imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
+    ./hardware-configuration.nix
     ../commons/users/user
     ../../modules/steam-config.nix
     # Ajouts spécifiques pour GMKtec K8 Plus

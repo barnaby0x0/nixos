@@ -35,14 +35,14 @@
 #    };
 
   fileSystems."/" =
-    { device = "/dev/dm-0";
+    { device = "/dev/nvme0n1p3";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices.root.device = "/dev/disk/by-partlabel/root";
+  # boot.initrd.luks.devices.root.device = "/dev/disk/by-partlabel/root";
 
   fileSystems."/boot" =
-    { device = "/dev/nvme0n1p1";
+    { device = "/dev/nvme0n1p2";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
