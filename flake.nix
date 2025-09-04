@@ -5,14 +5,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-#    disko ={
-#      url = "github:nix-community/disko";
-#      inputs.nixpkgs.follows = "nixpkgs";
-#    };
+   disko ={
+     url = "github:nix-community/disko";
+     inputs.nixpkgs.follows = "nixpkgs";
+   };
   };
 
-  #outputs = { self, nixpkgs, home-manager, disko, ... } @ inputs:
-  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
+  outputs = { self, nixpkgs, home-manager, disko, ... } @ inputs:
     let
       lib = nixpkgs.lib;
       systems = [ "x86_64-linux" ];
@@ -52,7 +51,7 @@
           system = "x86_64-linux";
 	        modules = [
             paths.k8test.host
-            #disko.nixosModules.disko
+            disko.nixosModules.disko
             homeManagerModule
             {
               home-manager.extraSpecialArgs = {};
