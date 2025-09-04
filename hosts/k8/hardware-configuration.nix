@@ -21,25 +21,18 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-#  fileSystems."/" =
-#    { device = root_part;
-#      fsType = "ext4";
-#    };
-#
-#  boot.initrd.luks.devices.root.device = luks_part;
-#
-#  fileSystems."/boot" =
-#    { device = boot_part;
-#      fsType = "vfat";
-#      options = [ "fmask=0077" "dmask=0077" ];
-#    };
+  # fileSystems."/" =
+  #   { device = "/dev/dm-0";
+  #     fsType = "ext4";
+  #   };
+
+  # boot.initrd.luks.devices.root.device = "/dev/disk/by-partlabel/root";
 
   fileSystems."/" =
-    { device = "/dev/dm-0";
+    { device = "/dev/nvme0n1p2";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices.root.device = "/dev/disk/by-partlabel/root";
 
   fileSystems."/boot" =
     { device = "/dev/nvme0n1p1";
