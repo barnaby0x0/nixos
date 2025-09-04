@@ -34,6 +34,17 @@
 #      options = [ "fmask=0077" "dmask=0077" ];
 #    };
 
+  boot.loader = {
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot";
+    };
+    systemd-boot = {
+      enable = true;
+      configurationLimit = 10;
+    };
+  };
+
   fileSystems."/" =
     { device = "/dev/nvme0n1p3";
       fsType = "ext4";
