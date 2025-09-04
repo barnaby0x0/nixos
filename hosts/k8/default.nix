@@ -5,6 +5,10 @@
     ./hardware-configuration.nix
     ../commons/users/user
     ../../modules/steam-config.nix
+    # Ajouts spécifiques pour GMKtec K8 Plus
+    # (modulesPath + "/profiles/hardware/cpu/amd.nix")
+    # (modulesPath + "/profiles/hardware/gpu/amd.nix")
+    # (modulesPath + "/profiles/all-hardware.nix")
   ];
 
   # Bootloader.
@@ -61,6 +65,45 @@
   };
 
   hardware.bluetooth.enable = true;
+
+
+  ## HARDWARE CONFIGURATION FOR GMKtec K8 Plus ##
+  
+  # # Pour le processeur AMD Ryzen
+  # hardware.cpu.amd.updateMicrocode = true;
+  
+  # # Pour le GPU Radeon intégré
+  # hardware.opengl = {
+  #   enable = true;
+  #   driSupport = true;
+  #   extraPackages = with pkgs; [
+  #     amdvlk
+  #     rocm-opencl-icd
+  #     rocm-opencl-runtime
+  #   ];
+  # };
+  
+  # # Optimisations pour SSD NVMe
+  # boot.kernelParams = [ "nvme_core.default_ps_max_latency_us=0" ];
+  
+  # # Gestion de l'énergie
+  # powerManagement.cpuFreqGovernor = "ondemand";
+  
+  # # Support WiFi/BT (si présent)
+  # hardware.enableRedistributableFirmware = true;
+  # hardware.firmware = [ pkgs.linux-firmware ];
+  
+  # # Pilotes pour les chipsets courants
+  # boot.initrd.availableKernelModules = [
+  #   "nvme"
+  #   "xhci_pci"
+  #   "ahci"
+  #   "usbhid"
+  #   "usb_storage"
+  #   "sd_mod"
+  #   "rtsx_pci_sdmmc"  # Pour lecteur carte SD si présent
+  # ];
+
   #hardware.bluetooth.powerOnBoot = true;
   
   # services.power-profiles-daemon.enable = true;
