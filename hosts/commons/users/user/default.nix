@@ -21,16 +21,6 @@
       ];
     };
     home-manager.users.user = import ../../../../home/user/user.home.nix;
-    security.sudo.extraRules = [
-    {
-      users = ["user"];
-      commands = [
-      {
-        command = "ALL";
-        options = ["NOPASSWD"];
-      }
-      ];
-   }
-];
+
 }
 

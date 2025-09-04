@@ -161,6 +161,18 @@
   security.pam.services.sddm.kwallet.enable = false;
   security.pam.services.login.kwallet.enable = pkgs.lib.mkForce false;
 
+  security.sudo.extraRules = [
+    {
+      users = ["user"];
+      commands = [
+      {
+        command = "ALL";
+        options = ["NOPASSWD"];
+      }
+      ];
+    }
+  ];
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "fr";
