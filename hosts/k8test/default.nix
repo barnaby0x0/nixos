@@ -152,6 +152,9 @@
    # };
   };
 
+  users.users.user.openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDpfkycNGYPLEXjSzQLpkRKIIHOfReD71oazZhESkBC8 user@vagrant"];
+  users.users.root.openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDpfkycNGYPLEXjSzQLpkRKIIHOfReD71oazZhESkBC8 user@vagrant"];
+
   services.desktopManager.plasma6.enable = true;
 
   # Exclude kwallet
