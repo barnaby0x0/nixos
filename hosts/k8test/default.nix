@@ -2,9 +2,10 @@
 
 {
   imports = [
-    ./hardware-configuration.nix
     ../commons/users/user
     ../../modules/steam-config.nix
+    (modulesPath + "/installer/scan/not-detected.nix")
+    ./disk-config.nix
     # Ajouts spécifiques pour GMKtec K8 Plus
     # (modulesPath + "/profiles/hardware/cpu/amd.nix")
     # (modulesPath + "/profiles/hardware/gpu/amd.nix")
@@ -12,8 +13,17 @@
   ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+
+   boot.loader = {
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot";
+    };
+    systemd-boot = {
+      enable = true;
+      configurationLimit = 10;
+    };
+  };  
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
