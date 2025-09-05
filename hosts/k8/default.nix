@@ -6,9 +6,9 @@
     ../commons/users/user
     ../../modules/steam-config.nix
     # Ajouts spécifiques pour GMKtec K8 Plus
-    # (modulesPath + "/profiles/hardware/cpu/amd.nix")
-    # (modulesPath + "/profiles/hardware/gpu/amd.nix")
-    # (modulesPath + "/profiles/all-hardware.nix")
+    (modulesPath + "/profiles/hardware/cpu/amd.nix")
+    (modulesPath + "/profiles/hardware/gpu/amd.nix")
+    (modulesPath + "/profiles/all-hardware.nix")
   ];
 
   # Bootloader.
@@ -70,18 +70,18 @@
   ## HARDWARE CONFIGURATION FOR GMKtec K8 Plus ##
   
   # # Pour le processeur AMD Ryzen
-  # hardware.cpu.amd.updateMicrocode = true;
+  hardware.cpu.amd.updateMicrocode = true;
   
   # # Pour le GPU Radeon intégré
-  # hardware.opengl = {
-  #   enable = true;
-  #   driSupport = true;
-  #   extraPackages = with pkgs; [
-  #     amdvlk
-  #     rocm-opencl-icd
-  #     rocm-opencl-runtime
-  #   ];
-  # };
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    extraPackages = with pkgs; [
+      amdvlk
+      rocm-opencl-icd
+      rocm-opencl-runtime
+    ];
+  };
   
   # # Optimisations pour SSD NVMe
   # boot.kernelParams = [ "nvme_core.default_ps_max_latency_us=0" ];
