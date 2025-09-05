@@ -6,8 +6,6 @@
     ../commons/users/user
     ../../modules/steam-config.nix
     # Ajouts spécifiques pour GMKtec K8 Plus
-    (modulesPath + "/profiles/hardware/cpu/amd.nix")
-    (modulesPath + "/profiles/hardware/gpu/amd.nix")
     (modulesPath + "/profiles/all-hardware.nix")
   ];
 
@@ -75,11 +73,8 @@
   # # Pour le GPU Radeon intégré
   hardware.opengl = {
     enable = true;
-    driSupport = true;
     extraPackages = with pkgs; [
       amdvlk
-      rocm-opencl-icd
-      rocm-opencl-runtime
     ];
   };
   
