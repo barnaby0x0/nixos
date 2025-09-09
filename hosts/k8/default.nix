@@ -32,8 +32,8 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  fileSystems."/home/user/Workspace" = {
-    device = "10.10.0.72:/Workspace";
+  fileSystems."/home/user/.local/share/Steam" = {
+    device = "10.10.0.72:/steam";
     fsType = "nfs";
     options = [
       "defaults"
