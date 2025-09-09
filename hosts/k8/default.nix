@@ -32,17 +32,17 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  fileSystems."/home/user/.local/share/Steam" = {
-    device = "10.10.0.72:/steam";
-    fsType = "nfs";
-    options = [
-      "defaults"
-      "nofail"
-      "x-systemd.device-timeout=9"
-      "proto=tcp"
-      "port=2049"
-    ];
-  };
+  #fileSystems."/home/user/.local/share/Steam" = {
+  #  device = "10.10.0.72:/steam";
+  #  fsType = "nfs";
+  #  options = [
+  #    "defaults"
+  #    "nofail"
+  #    "x-systemd.device-timeout=9"
+  #    "proto=tcp"
+  #    "port=2049"
+  #  ];
+  #};
 
 
   # Set your time zone.
