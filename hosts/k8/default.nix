@@ -32,8 +32,8 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  fileSystems."/home/user/Workspace" = {
-    device = "10.10.0.72:/Workspace";
+  fileSystems."/home/user/.local/share/Steam" = {
+    device = "10.10.0.72:/steam";
     fsType = "nfs";
     options = [
       "defaults"
@@ -173,6 +173,14 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
+  services.flatpak.enable = true;
+  systemd.services.flatpak-repo = {
+    wantedBy = [ "multi-user.target" ];
+    path = [ pkgs.flatpak ];
+    script = ''
+      flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    '';
+  };
 
   # Install firefox.
   programs.firefox.enable = true;
