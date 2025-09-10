@@ -21,6 +21,9 @@
       };
 
       paths = {
+        k8_colmena = {
+          host = "${self}/hosts/k8_colmena";
+        };
         k8 = {
           host = "${self}/hosts/k8";
         };
@@ -43,6 +46,18 @@
 
     in {
       nixosConfigurations = {
+       
+       k8_colmena = lib.nixosSystem {
+          system = "x86_64-linux";
+	        modules = [
+            paths.k8.host
+            homeManagerModule
+            {
+              home-manager.extraSpecialArgs = {};
+            }
+            homeManagerSettings
+          ];
+        };
 
         k8 = lib.nixosSystem {
           system = "x86_64-linux";
@@ -80,5 +95,34 @@
           ];
         };
     };
-  };
+
+    colmenaHive = colmena.lib.makeHive {
+      meta = {
+        nixpkgs = nixpkgs.legacyPackages.x86_64-linux;
+        nodeSpecialArgs = { inherit inputs; };
+      };
+
+      defaults = { pkgs, ... }: {
+        environment.systemPackages = [ pkgs.curl ];
+        nixpkgs.config.allowUnfree = true;
+      };
+
+      k8_colmena = {
+        deployment = {
+          targetHost = "10.10.0.12";
+          targetPort = 22;
+          targetUser = "user";
+          buildOnTarget = true;
+          tags = [ "desktop" "gaming" ];
+        };
+        imports = [
+          paths.k8.host
+          homeManagerModule
+          {
+            home-manager.extraSpecialArgs = {};
+          }
+          homeManagerSettings
+        ];
+      };
+    };
 }
