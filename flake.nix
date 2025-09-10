@@ -21,9 +21,6 @@
       };
 
       paths = {
-        k8test = {
-          host = "${self}/hosts/k8test";
-        };
         k8 = {
           host = "${self}/hosts/k8";
         };
@@ -46,19 +43,6 @@
 
     in {
       nixosConfigurations = {
-
-        k8test = lib.nixosSystem {
-          system = "x86_64-linux";
-	        modules = [
-            paths.k8test.host
-            disko.nixosModules.disko
-            homeManagerModule
-            {
-              home-manager.extraSpecialArgs = {};
-            }
-            homeManagerSettings
-          ];
-        };
 
         k8 = lib.nixosSystem {
           system = "x86_64-linux";
