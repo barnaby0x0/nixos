@@ -206,6 +206,7 @@
     vim
     zsh
     lm_sensors
+    meld
   ];
 
   programs.vim.defaultEditor = true;
