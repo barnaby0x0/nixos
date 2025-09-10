@@ -15,7 +15,6 @@
     terminator
     tmux
     vim
-    vscode
     zsh
   ];
 
