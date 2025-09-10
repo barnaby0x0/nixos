@@ -267,6 +267,16 @@
   in
     formatted;
 
+  system.autoUpgrade = {
+    enable = true;
+    flake = "github:barnaby0x0/nixos?ref=prod#k8";
+    dates = "minutely"; # Poll interval
+    flags = [
+      "--no-write-lock-file" # Prevent flake.lock from upgrading
+      "--option" "tarball-ttl" "0" # Required for polling below 1h
+    ];
+  };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
