@@ -9,9 +9,21 @@
     (modulesPath + "/profiles/all-hardware.nix")
   ];
 
+
+  boot.loader = {
+    efi = {
+      canTouchEfiVariables = true;  # Change from false to true
+      efiSysMountPoint = "/boot";
+    };
+    systemd-boot = {
+      enable = true;
+      consoleMode = "keep";
+      graceful = true;
+    };
+  };
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  #boot.loader.systemd-boot.enable = true;
+  #boot.loader.efi.canTouchEfiVariables = true;
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
