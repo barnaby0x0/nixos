@@ -149,7 +149,9 @@
    # };
   };
 
-  services.desktopManager.plasma6.enable = true;
+  #services.desktopManager.plasma6.enable = true;
+  programs.hyprland.enable = true; # enable Hyprland
+
 
   # Exclude kwallet
   security.pam.services.sddm.kwallet.enable = false;
@@ -219,6 +221,13 @@
     zsh
     lm_sensors
     meld
+    kitty # Hyprland
+    inter-font # Hyprland
+    ttf-noto-nerd # Hyprland
+    apple-fonts # Hyprland
+    ttf-ms-win11-segoe-ui-variable # Hyprland
+    #waybar # Hyprland
+    #rofi # Hyprland
   ];
 
   programs.vim.defaultEditor = true;
