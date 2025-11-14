@@ -37,6 +37,39 @@
       nrs = "sudo nixos-rebuild switch --flake github:barnaby0x0/nixos#k8";
     };
   };
+  #environment.sessionVariables.XDG_CONFIG_HOME = "${config.home.configDir}";
+#  programs.matugen = {
+#    enable = true;
+#    configFile = "${config.xdg.configDir}/matugen/config.toml";
+#  };
+
+#  programs.ax-shell = {
+#    enable = true;
+#    settings = {
+#      # --- General ---
+#      terminalCommand = "alacritty -e";
+##      wallpapersDir = "/path/to/your/wallpapers";
+#
+#      # --- Cursor ---
+#      cursor = {
+#        package = pkgs.oreo-cursors-plus;
+#        name = "oreo_black_cursors";
+#        size = 24;
+#      };
+#
+#      # --- Bar & Dock ---
+#      bar = {
+#        position = "Top"; # "Top", "Bottom", "Left", "Right"
+#        theme = "Pills";  # "Pills", "Dense", "Edge"
+#      };
+#      dock.enable = false; # Disable the dock
+#      panel.theme = "Notch"; # "Notch", "Panel"
+#
+#      # --- Keybindings ---
+#      keybindings.launcher = { prefix = "SUPER"; suffix = "SPACE"; };
+#    };
+#  };
+
 
   # Configuration des dotfiles (exemple simple)
   home.file.".vimrc".source = ./user.vim;

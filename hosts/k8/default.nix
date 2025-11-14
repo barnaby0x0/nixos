@@ -149,8 +149,8 @@
    # };
   };
 
-  #services.desktopManager.plasma6.enable = true;
-  programs.hyprland.enable = true; # enable Hyprland
+  services.desktopManager.plasma6.enable = true;
+  #programs.hyprland.enable = true; # enable Hyprland
 
 
   # Exclude kwallet
@@ -221,13 +221,31 @@
     zsh
     lm_sensors
     meld
-    kitty # Hyprland
-    inter-font # Hyprland
-    ttf-noto-nerd # Hyprland
-    apple-fonts # Hyprland
-    ttf-ms-win11-segoe-ui-variable # Hyprland
+    #kitty # Hyprland
+#    inter-font # Hyprland
+#    ttf-noto-nerd # Hyprland
+#    apple-fonts # Hyprland
+#    ttf-ms-win11-segoe-ui-variable # Hyprland
     #waybar # Hyprland
     #rofi # Hyprland
+    #pavucontrol
+    #blueman
+    #noto-fonts
+    #noto-fonts-cjk-sans
+    #noto-fonts-color-emoji
+    #liberation_ttf
+    #fira-code
+    #fira-code-symbols
+    #mplus-outline-fonts.githubRelease
+    #dina-font
+    #proggyfonts
+    #bibata-cursors
+#    inter-font\nsudo pacman -S ttf-noto-nerd\nyay -S apple-fonts\nyay -S ttf-ms-win11-segoe-ui-variable
+  ];
+
+  fonts.packages = [
+    pkgs.nerd-fonts._0xproto
+    pkgs.nerd-fonts.droid-sans-mono
   ];
 
   programs.vim.defaultEditor = true;
@@ -237,7 +255,25 @@
     MOZ_ENABLE_WAYLAND = "1";
   };
 
-  xdg.portal.enable = true;
+  #xdg.portal.enable = true;
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gnome
+      xdg-desktop-portal-gtk
+    ];
+    config = {
+      hyprland = {
+        default = [ "hyprland" "gtk" ];
+        "org.freedesktop.impl.portal.ScreenCast" = [
+          "gnome"
+        ];
+      };
+    };
+  };
+
+
   programs.zsh.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -9,6 +9,10 @@
      url = "github:nix-community/disko";
      inputs.nixpkgs.follows = "nixpkgs";
    };
+#   ax-shell = {
+#      url = "github:poogas/Ax-Shell";
+#      inputs.nixpkgs.follows = "nixpkgs";
+#   };
   };
 
   outputs = { self, nixpkgs, home-manager, disko, ... } @ inputs:
@@ -48,6 +52,7 @@
           system = "x86_64-linux";
 	        modules = [
             paths.k8.host
+            #ax-shell.homeManagerModules.default
             homeManagerModule
             {
               home-manager.extraSpecialArgs = {};
