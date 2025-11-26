@@ -221,6 +221,7 @@
     zsh
     lm_sensors
     meld
+    wireguard-tools
     #kitty # Hyprland
 #    inter-font # Hyprland
 #    ttf-noto-nerd # Hyprland
@@ -301,8 +302,8 @@
     };
   };
 
-  programs.virt-manager.enable = true;
-  virtualisation.docker.enable = true;
+  #programs.virt-manager.enable = true;
+  #virtualisation.docker.enable = true;
 
   # List services that you want to enable:
 
@@ -313,6 +314,26 @@
   networking.firewall.allowedTCPPorts = [ 
     24800 #deskflow
   ];
+
+  networking.wg-quick.interfaces = {
+    wg0 = {
+      address = [
+        "10.200.200.2/32"
+      ];
+      peers = [
+        {
+          allowedIPs = [
+            #"0.0.0.0/0"
+            "192.168.1.112/32"
+          ];
+          endpoint = "192.168.1.46:51820";
+          publicKey = "elT9lF0hR7fO7IAP52nKSJNRV7ikJRBPm6gu+h07Wlc=";
+        }
+      ];
+      privateKey = "AL2g4PspDveRZPKBjovzd7mW84fbGrmkK1ZVRRz/2Fs=";
+    };
+  };
+
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
