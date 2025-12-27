@@ -205,6 +205,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    kdePackages.okular
     bindfs
     qt6.qtwayland
     findutils
@@ -223,6 +224,7 @@
     lm_sensors
     meld
     wireguard-tools
+  #  okular
     #kitty # Hyprland
 #    inter-font # Hyprland
 #    ttf-noto-nerd # Hyprland
