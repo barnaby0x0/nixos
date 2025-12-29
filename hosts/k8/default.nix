@@ -81,14 +81,15 @@
   
   # # Pour le processeur AMD Ryzen
   hardware.cpu.amd.updateMicrocode = true;
-  
-  # # Pour le GPU Radeon intégré
-  hardware.opengl = {
-    enable = true;
-    extraPackages = with pkgs; [
-      amdvlk
-    ];
-  };
+  # Pour le GPU Radeon intégré
+  hardware.opengl.enable = true;
+  #hardware.opengl.enable = true;
+  #hardware.opengl = {
+  #  enable = true;
+    #extraPackages = with pkgs; [
+    #  amdvlk
+    #];
+  #};
   
   # # Optimisations pour SSD NVMe
   # boot.kernelParams = [ "nvme_core.default_ps_max_latency_us=0" ];
@@ -251,8 +252,10 @@
     pkgs.nerd-fonts._0xproto
     pkgs.nerd-fonts.droid-sans-mono
   ];
-
+  
+  programs.vim.enable = true;
   programs.vim.defaultEditor = true;
+
 
   environment.variables = {
     QT_QPA_PLATFORM = "wayland";
@@ -294,13 +297,13 @@
       package = pkgs.qemu_kvm;
       runAsRoot = true;
       swtpm.enable = true;
-      ovmf = {
-        enable = true;
-        packages = [(pkgs.OVMF.override {
-          secureBoot = true;
-          tpmSupport = true;
-        }).fd];
-      };
+      #ovmf = {
+      #  enable = true;
+      #  packages = [(pkgs.OVMF.override {
+      #    secureBoot = true;
+      #    tpmSupport = true;
+      #  }).fd];
+      #};
       vhostUserPackages = [ pkgs.virtiofsd ];
     };
   };

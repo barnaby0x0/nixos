@@ -18,12 +18,12 @@
   hardware.graphics = {
     enable = true;               # Remplace hardware.opengl.enable
     enable32Bit = true;          # Remplace driSupport32Bit
-    extraPackages = with pkgs; [ # Remplace hardware.opengl.extraPackages
-      amdvlk
-    ];
-    extraPackages32 = with pkgs.pkgsi686Linux; [
-      amdvlk
-    ];
+    #extraPackages = with pkgs; [ # Remplace hardware.opengl.extraPackages
+    #  amdvlk
+    #];
+    #extraPackages32 = with pkgs.pkgsi686Linux; [
+    #  amdvlk
+    #];
   };
 
   # UNSTABILITY ?
