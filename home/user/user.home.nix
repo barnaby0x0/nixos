@@ -22,7 +22,7 @@
 
   home.file.".vim/autoload/plug.vim".source = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim";
-    sha256 = "sha256-4JmeVzBIZedfWxXuhjfcTOW6lZF1V/OPfLY9RUtTz7Q=";
+    sha256 = "sha256-LuxOfosU4RpHmTz5euO9rGi186fel8CBQXzOPxZDK7E=";
   };
 
   # Gestionnaire de shell et configuration de l’environnement
