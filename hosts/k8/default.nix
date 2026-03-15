@@ -198,8 +198,9 @@
     '';
   };
 
-  virtualisation.docker = {
+  virtualisation.docker.rootless = {
     enable = true;
+    setSocketVariable = true;     # ← très pratique : positionne DOCKER_HOST automatiquement
     daemon.settings = {
       insecure-registries = [
         "10.0.0.250:5000"
@@ -209,6 +210,18 @@
       ];
     };
   };
+
+#  virtualisation.docker = {
+#    enable = true;
+#    daemon.settings = {
+#      insecure-registries = [
+#        "10.0.0.250:5000"
+#      ];
+#      registry-mirrors = [
+#        "http://10.0.0.250:5001"
+#      ];
+#    };
+#  };
 
   # Install firefox.
   programs.firefox.enable = true;
