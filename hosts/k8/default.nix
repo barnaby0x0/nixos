@@ -251,6 +251,7 @@
     lm_sensors
     meld
     wireguard-tools
+    bpfilter
   #  okular
     #kitty # Hyprland
 #    inter-font # Hyprland
