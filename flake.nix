@@ -9,6 +9,11 @@
      url = "github:nix-community/disko";
      inputs.nixpkgs.follows = "nixpkgs";
    };
+
+   colorshell = {
+    url = "github:retrozinndev/colorshell/ryo";
+    inputs.nixpkgs.follows = "nixpkgs";   # très recommandé
+  };
 #   ax-shell = {
 #      url = "github:poogas/Ax-Shell";
 #      inputs.nixpkgs.follows = "nixpkgs";
