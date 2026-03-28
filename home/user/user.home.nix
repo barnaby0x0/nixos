@@ -15,16 +15,7 @@
     terminator
     tmux
     vim
-    zsh
-# ─── colorshell & deps typiques ────────────────────────────────
-    inputs.colorshell.packages.${pkgs.system}.default   # ← le binaire principal (souvent colorshell ou ags-based)
-    # ou si le nom est différent : inputs.colorshell.packages.${pkgs.system}.colorshell
-
-    # Dépendances fréquentes pour ce genre de shell (AGS / Astal / GTK)
-    aylurs-gtk-shell     # souvent requis (ou ags si c'est la version upstream)
-    pywal16-colors       # pour la génération de couleurs depuis wallpaper
-    # gjs               # si besoin pour certains scripts
-    # nodePackages.pnpm # si build from source, mais flake devrait être précompilé    
+    zsh  
   ];
 
   #environment.systemPackages = with pkgs; [ glances ];
