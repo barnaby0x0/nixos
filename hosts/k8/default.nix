@@ -251,28 +251,6 @@
     lm_sensors
     meld
     wireguard-tools
-    bpfilter
-  #  okular
-    #kitty # Hyprland
-#    inter-font # Hyprland
-#    ttf-noto-nerd # Hyprland
-#    apple-fonts # Hyprland
-#    ttf-ms-win11-segoe-ui-variable # Hyprland
-    #waybar # Hyprland
-    #rofi # Hyprland
-    #pavucontrol
-    #blueman
-    #noto-fonts
-    #noto-fonts-cjk-sans
-    #noto-fonts-color-emoji
-    #liberation_ttf
-    #fira-code
-    #fira-code-symbols
-    #mplus-outline-fonts.githubRelease
-    #dina-font
-    #proggyfonts
-    #bibata-cursors
-#    inter-font\nsudo pacman -S ttf-noto-nerd\nyay -S apple-fonts\nyay -S ttf-ms-win11-segoe-ui-variable
   ];
 
   fonts.packages = [
